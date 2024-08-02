@@ -22,10 +22,13 @@ header, footer {
 }
 
 main {
-    min-height: 95vh;
+    min-height: 78vh;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
-main > h2 {
+body > h2 {
     color:wheat;
     width: 100wv;
     text-align: center;
