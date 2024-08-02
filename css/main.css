@@ -50,7 +50,7 @@ article.producto {
     color: wheat;
     padding: 10px;
     margin: 20px;
-    height: 30vh;
+    height: auto;
     border: goldenrod 2.5px solid;
     border-radius: 15px;
     display: flex;
@@ -67,6 +67,11 @@ article.producto > img {
 
 .producto > h2 {
     margin-bottom: 10px;
+}
+
+.producto > h3 {
+    background-color: black;
+    font-size: 30px;
 }
 
 .producto > button {
@@ -93,4 +98,16 @@ article.producto > img {
     height: 75px;
     filter: saturate(4.5);
     border-radius: 10px;
+}
+
+#addButton {
+    background-image: url("https://thumbs.dreamstime.com/b/old-wood-plank-texture-background-wooden-board-surface-vintage-backdrops-textured-151380240.jpg");
+    width: 35vh;
+    color: wheat;
+    padding: 10px;
+    margin: 20px;
+    height: auto;
+    border: goldenrod 2.5px solid;
+    border-radius: 15px;
+    font-size: 10vh;
 }
