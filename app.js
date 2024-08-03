@@ -12,7 +12,7 @@ function load_catalogue() {
 		button.textContent = "Adquirir"
 		let price = document.createElement("h3")
 		price.textContent = product["precio"]+"₪"
-		container.value = product["precio real"]
+		container.value = product["valor real"]
 		container.id = i
 		container.appendChild(name)
 		container.appendChild(image)

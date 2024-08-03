@@ -30,6 +30,11 @@ let products = [
         "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Emberiza_hortulana_2.jpg/226px-Emberiza_hortulana_2.jpg",
         "precio": "םי״ו",
         "valor real": 616
+    }, {
+        "nombre": "Headcrab",
+        "img": "https://static.wikia.nocookie.net/halflife7283/images/8/89/Heacrab_HL2_Model.jpg/revision/latest?cb=20131213222623&path-prefix=es",
+        "precio": "ג",
+        "valor real": 3
     }
 ]
 
