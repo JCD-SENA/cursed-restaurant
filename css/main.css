@@ -72,6 +72,8 @@ article.producto > img {
 .producto > h3 {
     background-color: black;
     font-size: 30px;
+    padding-left: 10px;
+    padding-right: 20px;
 }
 
 .producto > button {
