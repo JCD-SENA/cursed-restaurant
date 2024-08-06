@@ -1,6 +1,6 @@
 let catalogue = document.getElementById("main")
 
-function load_catalogue() {
+function loadCatalogue() {
 	products.forEach((product, i) => {
 		let container = document.createElement("article")
 		container.className = "producto"
@@ -22,4 +22,12 @@ function load_catalogue() {
 	})
 }
 
-load_catalogue();
+function checkIfAlreadyOnCatalogue () {
+	
+}
+
+function addCatalogue () {
+
+}
+
+loadCatalogue();

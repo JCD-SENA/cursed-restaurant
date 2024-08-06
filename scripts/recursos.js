@@ -12,7 +12,7 @@ let products = [
         "valor real": 355
     }, {
         "nombre": "キッド東京",
-        "img": "https://pbs.twimg.com/media/CuVTpbKXEAAcl-G.jpg",
+        "img": "https://qph.cf2.quoracdn.net/main-qimg-a455d6f1daa8e62350c0a35301609319-lq",
         "precio": "ץיב",
         "valor real": 912
     }, {
