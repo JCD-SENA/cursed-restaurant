@@ -12,6 +12,7 @@ function loadCatalogue() {
 			image.src = product["img"]
 			let button = document.createElement("button")
 			button.textContent = "Adquirir"
+			button.addEventListener("click", () => {addCart(i)})
 			let price = document.createElement("h3")
 			price.textContent = "د.إ"+product["precio"]
 			container.value = product["valor real"]
