@@ -1,5 +1,9 @@
+import { products, toArab } from "./recursos.js"
+import { addCart } from "./carrito.js"
+
 let catalogue = document.getElementById("main")
 let onCatalogue = []
+let playingMusic = false;
 
 function loadCatalogue() {
 	products.forEach((product, i) => {
@@ -14,7 +18,7 @@ function loadCatalogue() {
 			button.textContent = "Adquirir"
 			button.addEventListener("click", () => {addCart(i)})
 			let price = document.createElement("h3")
-			price.textContent = "د.إ"+product["precio"]
+			price.textContent = "دإ"+product["precio"]
 			container.value = product["valor real"]
 			container.id = i
 			container.appendChild(name)
@@ -27,23 +31,8 @@ function loadCatalogue() {
 	})
 }
 
-function addCatalogue (name, priceNumber, img) {
-	let artNumeral = ""
-	let price = priceNumber.toString()
-	for (let i = 0; i < price.length; i++) {
-		switch (price[i]) {
-			case "0": artNumeral += '٠';break;
-			case "1": artNumeral += '١';break;
-			case "2": artNumeral += '٢';break;
-			case "3": artNumeral += '٣';break;
-			case "4": artNumeral += '٤';break;
-			case "5": artNumeral += '٥';break;
-			case "6": artNumeral += '٦';break;
-			case "7": artNumeral += '٧';break;
-			case "8": artNumeral += '٨';break;
-			case "9": artNumeral += '٩';break;
-		}
-	}
+export function addCatalogue (name, priceNumber, img) {
+	let artNumeral = toArab(priceNumber)
 	console.log(artNumeral)
 	products.push({
 		"nombre": name,
