@@ -9,8 +9,8 @@ export function addCartAlert(item) {
     background.className = "AlertBg"
     messageItself.className = "producto"
     messageItself.id = "AlertMessageItself"
-    button.innerText = "Ok"
-    text.innerText = "Se ha añadido el producto \""+data["nombre"]+"\" al carrito!"
+    button.textContent = "Ok"
+    text.textContent = "Se ha añadido el producto \""+data["nombre"]+"\" al carrito!"
     
     button.addEventListener("click", (element) => {
         document.body.removeChild(background)

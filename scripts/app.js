@@ -43,11 +43,11 @@ export function addCatalogue (name, priceNumber, img) {
 	loadCatalogue()
 }
 
-loadCatalogue();
-
 document.getElementById("footer").addEventListener("click", () => {
 	let themenoid = new Audio("https://vgmtreasurechest.com/soundtracks/club-penguin-original-soundtrack/eayrodluzi/29.%20Charlie%27s%20Here.mp3");
     if (!playingMusic)
         themenoid.play()
     playingMusic = true;
 })
+
+window.addEventListener("DOMContentLoaded", loadCatalogue)
