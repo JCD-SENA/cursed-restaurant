@@ -44,7 +44,7 @@ footer {
 	margin-bottom: 0;
 }
 
-article.producto {
+.producto {
 	background-image: url("https://thumbs.dreamstime.com/b/old-wood-plank-texture-background-wooden-board-surface-vintage-backdrops-textured-151380240.jpg");
 	width: 35vh;
 	color: wheat;
@@ -123,4 +123,18 @@ article.producto > img {
 	height: auto;
 	border: goldenrod 2.5px solid;
 	border-radius: 15px;
+}
+
+.AlertBg {
+	background-color: #63340d78;
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+	padding: 0;
+	margin: 0;
+}
+
+#AlertMessageItself {
+
 }

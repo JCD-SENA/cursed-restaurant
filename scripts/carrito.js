@@ -1,5 +1,6 @@
 function addCart (item) {
 	localStorage.setItem("carrito",item+","+localStorage.getItem("carrito"))
+	addCartAlert(item)
 }
 
 function parseCart () {
