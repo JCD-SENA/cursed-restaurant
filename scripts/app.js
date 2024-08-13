@@ -18,8 +18,7 @@ function loadCatalogue() {
 			button.textContent = "Adquirir"
 			button.addEventListener("click", () => {addCart(i)})
 			let price = document.createElement("h3")
-			price.textContent = "دإ"+product["precio"]
-			container.value = product["valor real"]
+			price.textContent = "دإ"+toArab(product["precio"])
 			container.id = i
 			container.appendChild(name)
 			container.appendChild(image)
@@ -32,13 +31,10 @@ function loadCatalogue() {
 }
 
 export function addCatalogue (name, priceNumber, img) {
-	let artNumeral = toArab(priceNumber)
-	console.log(artNumeral)
 	products.push({
 		"nombre": name,
 		"img": img,
-		"precio": artNumeral,
-		"valor real": price
+		"precio": price
 	})
 	loadCatalogue()
 }

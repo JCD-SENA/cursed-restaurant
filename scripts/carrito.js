@@ -3,11 +3,14 @@ import { addCartAlert } from "./alerts.js"
 
 export function addCart (item) {
 	localStorage.setItem("carrito",item+","+localStorage.getItem("carrito"))
+	displayCart()
 	addCartAlert(item)
 }
 
+let cartList = document.getElementById("carritoElements")
+
 function parseCart () {
-	if (localStorage.getItem("carrito") == null)
+	if (localStorage.getItem("carrito") == null || localStorage.getItem("carrito") == "null")
 		return "No hay nada en el carrito"
 	let res = []
 	localStorage.getItem("carrito").split(",").forEach((item, i) => {
@@ -17,23 +20,59 @@ function parseCart () {
 	return res
 }
 
-document.getElementById("carrito").addEventListener("click", () => {
+function displayCart() {
 	let cart = parseCart()
+	cartList.innerHTML = ""
 	if (Array.isArray(cart)) {
+		let cartIds = localStorage.getItem("carrito").split(",")
 		let quantities = {}
 		let totalPrice = 0
-		cart.forEach((item) => {
+		cart.forEach((item, i) => {
 			if (quantities.hasOwnProperty(item["nombre"]))
 				quantities[item["nombre"]] += 1
 			else
 				quantities[item["nombre"]] = 1
-			totalPrice += item["valor real"]
+			totalPrice += item["precio"]
 		})
-		Object.keys(quantities).forEach((itemKey) => {
-			console.log(itemKey+" x "+quantities[itemKey])
+		let totalPriceDisplay = document.createElement("span")
+		let totalPriceContainer = document.createElement("div")
+		let totalPriceTag = document.createElement("b")
+		Object.keys(quantities).forEach((itemKey, i) => {
+			let product = document.createElement("div")
+			let productName = document.createElement("span")
+			let productQuantity = document.createElement("b")
+			let productRemove =document.createElement("button")
+			product.className="carritoItem"
+			productName.textContent = itemKey
+			productQuantity.textContent = "x"+quantities[itemKey]
+			productRemove.textContent="Quitar"
+			productRemove.addEventListener("click", () => {
+				localStorage.setItem("carrito", localStorage.getItem("carrito").replace(cartIds[i]+",",""))
+				displayCart()
+			})
+			product.appendChild(productName)
+			product.appendChild(productQuantity)
+			product.appendChild(productRemove)
+			cartList.appendChild(product)
 		})
-		console.log("دإ"+toArab(totalPrice)+" ("+totalPrice+"de)")
+		totalPriceContainer.className = "totalPrice"
+		totalPriceDisplay.textContent = "Precio total "
+		totalPriceTag.textContent = "دإ"+toArab(totalPrice)+" ("+totalPrice+"de)"
+		totalPriceContainer.appendChild(totalPriceDisplay)
+		totalPriceContainer.appendChild(totalPriceTag)
+		cartList.appendChild(totalPriceContainer)
 	} else {
-		console.log(cart)
+		let noContnet = document.createElement("i")
+		noContnet.textContent = "No hay nada en el carrito, por ahora"
+		cartList.appendChild(noContnet)
 	}
+}
+
+document.getElementById("carrito").addEventListener("click", () => {
+	let cartDisplay = document.getElementById("carritoDisplay")
+	displayCart()
+	cartDisplay.style.animation = "showCarrito 0.25s forwards"
+	document.getElementById("cerrarCarrito").addEventListener("click", () => {
+		cartDisplay.style.animation = "hideCarrito 0.25s"
+	})
 })
