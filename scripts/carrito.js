@@ -1,5 +1,6 @@
-import { products, toArab } from "./recursos.js"
+import { toArab } from "./recursos.js"
 import { addCartAlert } from "./alerts.js"
+import { products } from "./app.js"
 
 export function addCart (item) {
 	localStorage.setItem("carrito",item+","+localStorage.getItem("carrito"))
@@ -28,11 +29,11 @@ function displayCart() {
 		let quantities = {}
 		let totalPrice = 0
 		cart.forEach((item, i) => {
-			if (quantities.hasOwnProperty(item["nombre"]))
-				quantities[item["nombre"]] += 1
+			if (quantities.hasOwnProperty(item["title"]))
+				quantities[item["title"]] += 1
 			else
-				quantities[item["nombre"]] = 1
-			totalPrice += item["precio"]
+				quantities[item["title"]] = 1
+			totalPrice += item["price"]
 		})
 		let totalPriceDisplay = document.createElement("span")
 		let totalPriceContainer = document.createElement("div")

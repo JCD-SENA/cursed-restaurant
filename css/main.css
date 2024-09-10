@@ -45,6 +45,7 @@ main {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
+	color: wheat;
 }
 
 body > h2 {
@@ -86,6 +87,7 @@ article.producto > img {
 
 .producto > h2 {
 	margin-bottom: 10px;
+	text-align: center;
 }
 
 .producto > h3 {
@@ -225,4 +227,16 @@ article.producto > img {
 
 .totalPrice > b {
 	color: gold;
+}
+
+.category {
+	color: gold;
+	font-weight: bold;
+}
+
+.desc {
+	color: wheat;
+	background-color: black;
+	padding: 10px;
+	width: 90%;
 }

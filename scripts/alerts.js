@@ -1,4 +1,4 @@
-import { products } from "./recursos.js"
+import { products } from "./app.js"
 
 export function addCartAlert(item) {
     let data = products[item]
@@ -10,7 +10,7 @@ export function addCartAlert(item) {
     messageItself.className = "producto"
     messageItself.id = "AlertMessageItself"
     button.textContent = "Ok"
-    text.textContent = "Se ha añadido el producto \""+data["nombre"]+"\" al carrito!"
+    text.textContent = "Se ha añadido el producto \""+data["title"]+"\" al carrito!"
     
     button.addEventListener("click", (element) => {
         document.body.removeChild(background)

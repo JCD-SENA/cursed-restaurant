@@ -1,33 +1,53 @@
-import { products, toArab } from "./recursos.js"
+import { toArab } from "./recursos.js"
 import { addCart } from "./carrito.js"
 
 let catalogue = document.getElementById("main")
 let onCatalogue = []
 let playingMusic = false;
 
-function loadCatalogue() {
-	products.forEach((product, i) => {
-		if (!onCatalogue.includes(i)) {
-			let container = document.createElement("article")
-			container.className = "producto"
-			let name = document.createElement("h2")
-			name.textContent = product["nombre"]
-			let image = document.createElement("img")
-			image.src = product["img"]
-			let button = document.createElement("button")
-			button.textContent = "Adquirir"
-			button.addEventListener("click", () => {addCart(i)})
-			let price = document.createElement("h3")
-			price.textContent = "دإ"+toArab(product["precio"])
-			container.id = i
-			container.appendChild(name)
-			container.appendChild(image)
-			container.appendChild(price)
-			container.appendChild(button)
-			catalogue.appendChild(container)
-			onCatalogue.push(i)
-		}
-	})
+export let products = null
+
+async function loadCatalogue() {
+	try {
+		const response = await fetch("https://api.escuelajs.co/api/v1/products")
+		products = await response.json()
+
+		products.forEach((product, i) => {
+			if (!onCatalogue.includes(i)) {
+				let container = document.createElement("article")
+				let name = document.createElement("h2")
+				let image = document.createElement("img")
+				let button = document.createElement("button")
+				let price = document.createElement("h3")
+				let cath = document.createElement("span")
+				let desc = document.createElement("p")
+	
+				container.className = "producto"
+				name.textContent = product["title"]
+				image.src = product["images"][0]
+				button.textContent = "Adquirir"
+				button.addEventListener("click", () => {addCart(i)})
+				price.textContent = "دإ"+toArab(product["price"])
+				container.id = i
+				cath.className = "category"
+				desc.className = "desc"
+				cath.textContent = product["category"]["name"]
+				desc.textContent = product["description"]
+				container.appendChild(name)
+				container.appendChild(image)
+				container.appendChild(price)
+				container.appendChild(cath)
+				container.appendChild(desc)
+				container.appendChild(button)
+				catalogue.appendChild(container)
+				onCatalogue.push(i)
+			}
+		})
+	} catch (error) {
+		console.error(error)
+		catalogue.style.fontSize = "75px"
+		catalogue.innerHTML = "La API no respondió."
+	}
 }
 
 export function addCatalogue (name, priceNumber, img) {
