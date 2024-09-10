@@ -24,7 +24,7 @@ async function loadCatalogue() {
 	
 				container.className = "producto"
 				name.textContent = product["title"]
-				image.src = product["images"][0]
+				image.src = product["images"][0].replaceAll('"', "").replaceAll("[", "").replaceAll("]", "")
 				button.textContent = "Adquirir"
 				button.addEventListener("click", () => {addCart(i)})
 				price.textContent = "دإ"+toArab(product["price"])
